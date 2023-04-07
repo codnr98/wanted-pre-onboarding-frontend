@@ -1,6 +1,8 @@
-import React from "react";
-
 function Main() {
-  return <div>Main Page</div>;
+  return (
+    <div>
+      <h1 className='text-3xl'>ToDoList</h1>
+    </div>
+  );
 }
 export default Main;

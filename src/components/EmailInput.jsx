@@ -2,8 +2,6 @@ function EmailInput({
   placeholder,
   errorMessage,
   state,
-  label,
-  type,
   id,
   onChange,
   value,
@@ -12,13 +10,13 @@ function EmailInput({
 }) {
   return (
     <label htmlFor={id} className='flex flex-col'>
-      {label}
+      {"Email"}
       <input
         data-testid='email-input'
         state={state}
-        placeholder={placeholder}
+        placeholder='Email'
         onChange={onChange}
-        type={type}
+        type='email'
         id={id}
         value={value}
         className={`py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
