@@ -1,12 +1,17 @@
 import {useEffect, useState} from "react";
+import getToDoList from "../apis/getToDoList";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([]);
 
-  const patchToDoList = async () => {};
+  const patchToDoList = async () => {
+    const response = await getToDoList();
+    console.log(response);
+    return response;
+  };
 
   useEffect(() => {
-    setToDos();
+    patchToDoList();
   }, []);
 
   return (
