@@ -1,13 +1,34 @@
 import {useEffect, useState} from "react";
 import getToDoList from "../apis/getToDoList";
+import postToDo from "../apis/postToDo";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([]);
+  const [toDo, setToDo] = useState("");
+
+  const pathData = {
+    todo: "",
+  };
 
   const patchToDoList = async () => {
     const response = await getToDoList();
     console.log(response);
-    return response;
+    setToDos(response);
+  };
+
+  const handleChangeToDo = (e) => {
+    const {value} = e.target;
+    setToDo(value);
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    pathData.todo = toDo;
+    try {
+      await postToDo(pathData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -19,8 +40,15 @@ function ToDoList() {
       <h1 className='text-3xl'>ToDo List</h1>
 
       <form>
-        <input data-testid='new-todo-input' />
-        <button data-testid='new-todo-add-button'>추가</button>
+        <input
+          data-testid='new-todo-input'
+          value={toDo}
+          onChange={handleChangeToDo}
+        />
+
+        <button data-testid='new-todo-add-button' onClick={handleClick}>
+          추가
+        </button>
       </form>
 
       <ul>
