@@ -1,13 +1,11 @@
 import {useState} from "react";
 import {useNavigate} from "react-router";
-
-import validationEmail from "../utils/validationEmail";
-import validationPassword from "../utils/validationPassword";
-import postSignUp from "../apis/postSignUp";
 import EmailInput from "../components/EmailInput";
 import PasswordInput from "../components/PasswordInput";
+import validationEmail from "../utils/validationEmail";
+import validationPassword from "../utils/validationPassword";
 
-function SignUp() {
+function SignIn() {
   const [email, setEmail] = useState("");
   const [isEmailSuccess, setIsEmailSuccess] = useState({
     isSuccess: false,
@@ -47,7 +45,6 @@ function SignUp() {
     pathData.password = password;
     try {
       await postSignUp(pathData);
-      navigate("/signin");
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +52,6 @@ function SignUp() {
 
   return (
     <div>
-      <h1 className='text-3xl'>Sign Up</h1>
       <form>
         <EmailInput
           id={"signup__email-input"}
@@ -82,4 +78,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignIn;
