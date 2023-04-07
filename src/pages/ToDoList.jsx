@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import getToDoList from "../apis/getToDoList";
 import ToDoForm from "../components/ToDoForm";
+import ToDo from "../components/ToDo";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([]);
@@ -20,14 +21,9 @@ function ToDoList() {
       <h1 className='text-3xl'>ToDo List</h1>
       <ToDoForm />
       <ul>
-        <li>
-          <label>
-            <input type='checkbox' />
-            <span>TODO 1</span>
-          </label>
-          <button data-testid='modify-button'>수정</button>
-          <button data-testid='delete-button'>삭제</button>
-        </li>
+        {toDos.map((todo) => (
+          <ToDo key={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} />
+        ))}
       </ul>
     </div>
   );
