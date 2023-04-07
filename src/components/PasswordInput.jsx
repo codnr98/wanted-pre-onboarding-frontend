@@ -1,4 +1,4 @@
-function EmailInput({
+function PasswordInput({
   errorMessage,
   state,
   id,
@@ -9,13 +9,13 @@ function EmailInput({
 }) {
   return (
     <label htmlFor={id} className='flex flex-col'>
-      {"Email"}
+      {"Password"}
       <input
-        data-testid='email-input'
+        data-testid='password-input'
         state={state}
-        placeholder='Email'
+        placeholder='Password'
         onChange={onChange}
-        type='email'
+        type='password'
         id={id}
         value={value}
         className={`py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
@@ -27,4 +27,4 @@ function EmailInput({
   );
 }
 
-export default EmailInput;
+export default PasswordInput;
