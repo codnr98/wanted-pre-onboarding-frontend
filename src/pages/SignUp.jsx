@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 
 import validationEmail from "../utils/validationEmail";
@@ -52,6 +52,13 @@ function SignUp() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    console.log(localStorage.getItem("access_token"));
+    if (localStorage.getItem("access_token")) {
+      navigate("/todo");
+    }
+  }, []);
 
   return (
     <div>

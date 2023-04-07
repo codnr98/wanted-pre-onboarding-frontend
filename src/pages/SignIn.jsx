@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 import EmailInput from "../components/EmailInput";
 import PasswordInput from "../components/PasswordInput";
@@ -47,10 +47,18 @@ function SignIn() {
     try {
       const data = await postSignIn(pathData);
       localStorage.setItem("access_token", data.access_token);
+      navigate("/todo");
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    console.log(localStorage.getItem("access_token"));
+    if (localStorage.getItem("access_token")) {
+      navigate("/todo");
+    }
+  }, []);
 
   return (
     <div>
