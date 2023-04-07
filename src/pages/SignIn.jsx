@@ -4,6 +4,7 @@ import EmailInput from "../components/EmailInput";
 import PasswordInput from "../components/PasswordInput";
 import validationEmail from "../utils/validationEmail";
 import validationPassword from "../utils/validationPassword";
+import postSignIn from "../apis/postSignIn";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -44,7 +45,8 @@ function SignIn() {
     pathData.email = email;
     pathData.password = password;
     try {
-      await postSignUp(pathData);
+      const data = await postSignIn(pathData);
+      localStorage.setItem("access_token", data.access_token);
     } catch (error) {
       console.error(error);
     }
@@ -52,6 +54,7 @@ function SignIn() {
 
   return (
     <div>
+      <h1 className='text-3xl'>Sign In</h1>
       <form>
         <EmailInput
           id={"signup__email-input"}
@@ -69,9 +72,9 @@ function SignIn() {
           className='border p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-300'
           onClick={handleClick}
           type='submit'
-          data-testid='signup-button'
+          data-testid='signin-button'
           disabled={isSuccess ? null : "disabled"}>
-          Sign Up
+          Sign In
         </button>
       </form>
     </div>
