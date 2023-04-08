@@ -1,6 +1,9 @@
-function ToDo({todo, id, isCompleted}) {
+import {useState} from "react";
+
+function ToDo({todo, isCompleted}) {
+  const [isComplete, setIsComplete] = useState(isCompleted);
   return (
-    <li key={id}>
+    <li>
       <label>
         <input type='checkbox' />
         <span>{todo}</span>

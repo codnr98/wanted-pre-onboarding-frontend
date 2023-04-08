@@ -10,7 +10,6 @@ function ToDoList() {
 
   const patchToDoList = async () => {
     const response = await getToDoList();
-    console.log(response);
     setToDos(response);
   };
 
@@ -24,7 +23,7 @@ function ToDoList() {
   return (
     <div>
       <h1 className='text-3xl'>ToDo List</h1>
-      <ToDoForm />
+      <ToDoForm toDos={toDos} setToDos={setToDos} />
       <ul>
         {toDos.map((todo) => (
           <ToDo key={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} />

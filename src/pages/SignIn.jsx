@@ -47,7 +47,7 @@ function SignIn() {
     try {
       const data = await postSignIn(pathData);
       localStorage.setItem("access_token", data.access_token);
-      navigate("/todo");
+      if (localStorage.getItem("access_token")) navigate("/todo");
     } catch (error) {
       console.error(error);
     }

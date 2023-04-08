@@ -1,7 +1,7 @@
 import {useState} from "react";
 import postToDo from "../apis/postToDo";
 
-function ToDoForm() {
+function ToDoForm({toDos, setToDos}) {
   const [toDo, setToDo] = useState("");
 
   const pathData = {
@@ -17,7 +17,9 @@ function ToDoForm() {
     e.preventDefault();
     pathData.todo = toDo;
     try {
-      await postToDo(pathData);
+      const response = await postToDo(pathData);
+      setToDos([...toDos, response]);
+      console.log(toDos);
       setToDo("");
     } catch (error) {
       console.error(error);
