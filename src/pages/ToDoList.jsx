@@ -2,9 +2,11 @@ import {useEffect, useState} from "react";
 import getToDoList from "../apis/getToDoList";
 import ToDoForm from "../components/ToDoForm";
 import ToDo from "../components/ToDo";
+import {useNavigate} from "react-router";
 
 function ToDoList() {
   const [toDos, setToDos] = useState([]);
+  const navigate = useNavigate();
 
   const patchToDoList = async () => {
     const response = await getToDoList();
@@ -13,6 +15,9 @@ function ToDoList() {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem("access_token")) {
+      navigate("/signin");
+    }
     patchToDoList();
   }, []);
 
