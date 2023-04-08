@@ -1,5 +1,6 @@
 import {useState} from "react";
 import putToDo from "../apis/putToDo";
+import deleteToDo from "../apis/deleteToDo";
 
 function ToDo({id, todo, isCompleted}) {
   const [title, setTitle] = useState(todo);
@@ -37,10 +38,18 @@ function ToDo({id, todo, isCompleted}) {
     const response = await putToDo(id, pathModifyData);
   };
 
+  const handleClickDelete = async () => {
+    await deleteToDo(id);
+  };
+
   return (
     <li>
       <label>
-        <input type='checkbox' onChange={handleChangeCheckbox} />
+        <input
+          type='checkbox'
+          checked={isComplete}
+          onChange={handleChangeCheckbox}
+        />
         {isModify ? (
           <input onChange={handleChange} value={title}></input>
         ) : (
@@ -62,7 +71,9 @@ function ToDo({id, todo, isCompleted}) {
           <button data-testid='modify-button' onClick={handleClickModify}>
             수정
           </button>
-          <button data-testid='delete-button'>삭제</button>
+          <button data-testid='delete-button' onClick={handleClickDelete}>
+            삭제
+          </button>
         </>
       )}
     </li>
