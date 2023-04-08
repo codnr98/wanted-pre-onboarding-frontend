@@ -21,7 +21,7 @@ function ToDo({id, todo, isCompleted}) {
   };
 
   const handleClickSubmit = async () => {
-    pathModifyData.todo = todo;
+    pathModifyData.todo = title;
     const response = await putToDo(id, pathModifyData);
   };
 
@@ -30,10 +30,17 @@ function ToDo({id, todo, isCompleted}) {
     setTitle(value);
   };
 
+  const handleChangeCheckbox = async () => {
+    setIsComplete(!isComplete);
+    pathModifyData.isCompleted = !isComplete;
+    pathModifyData.todo = title;
+    const response = await putToDo(id, pathModifyData);
+  };
+
   return (
     <li>
       <label>
-        <input type='checkbox' />
+        <input type='checkbox' onChange={handleChangeCheckbox} />
         {isModify ? (
           <input onChange={handleChange} value={title}></input>
         ) : (
