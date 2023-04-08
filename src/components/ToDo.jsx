@@ -24,9 +24,11 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
   const handleClickSubmit = async () => {
     pathModifyData.todo = title;
     const response = await putToDo(id, pathModifyData);
+    const index = toDos.findIndex((todo) => todo.id === response.id);
+    setToDos([...toDos.slice(0, index), response, ...toDos.slice(index + 1)]);
   };
 
-  const handleChange = (e) => {
+  const handleChangeTitle = (e) => {
     const {value} = e.target;
     setTitle(value);
   };
@@ -35,7 +37,7 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
     setIsComplete(!isComplete);
     pathModifyData.isCompleted = !isComplete;
     pathModifyData.todo = title;
-    const response = await putToDo(id, pathModifyData);
+    await putToDo(id, pathModifyData);
   };
 
   const handleClickDelete = async () => {
@@ -52,7 +54,10 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
           onChange={handleChangeCheckbox}
         />
         {isModify ? (
-          <input onChange={handleChange} value={title}></input>
+          <input
+            data-testid='modify-input'
+            onChange={handleChangeTitle}
+            value={title}></input>
         ) : (
           <span>{title}</span>
         )}
