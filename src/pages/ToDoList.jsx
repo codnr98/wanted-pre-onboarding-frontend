@@ -26,7 +26,14 @@ function ToDoList() {
       <ToDoForm toDos={toDos} setToDos={setToDos} />
       <ul>
         {toDos.map((todo) => (
-          <ToDo key={todo.id} todo={todo.todo} isCompleted={todo.isCompleted} />
+          <ToDo
+            key={todo.id}
+            id={todo.id}
+            todo={todo.todo}
+            isCompleted={todo.isCompleted}
+            toDos={toDos}
+            setToDos={setToDos}
+          />
         ))}
       </ul>
     </div>
