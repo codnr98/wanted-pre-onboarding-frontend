@@ -2,7 +2,7 @@ import {useState} from "react";
 import putToDo from "../apis/putToDo";
 import deleteToDo from "../apis/deleteToDo";
 
-function ToDo({id, todo, isCompleted}) {
+function ToDo({id, todo, isCompleted, toDos, setToDos}) {
   const [title, setTitle] = useState(todo);
   const [isComplete, setIsComplete] = useState(isCompleted);
   const [isModify, setIsModify] = useState(false);
@@ -40,6 +40,7 @@ function ToDo({id, todo, isCompleted}) {
 
   const handleClickDelete = async () => {
     await deleteToDo(id);
+    setToDos(toDos.filter((todo) => todo.id !== id));
   };
 
   return (
