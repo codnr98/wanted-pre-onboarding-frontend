@@ -33,12 +33,12 @@ function ToDoForm({toDos, setToDos}) {
         data-testid='new-todo-input'
         value={toDo}
         onChange={handleChangeToDo}
-        className={inputStyle}
+        className={`${inputStyle} w-96 mr-1`}
       />
       <button
         data-testid='new-todo-add-button'
         onClick={handleClick}
-        className={buttonStyle}>
+        className={`${buttonStyle} w-20`}>
         추가
       </button>
     </form>

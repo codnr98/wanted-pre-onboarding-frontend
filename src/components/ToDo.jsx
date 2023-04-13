@@ -1,7 +1,7 @@
 import {useState} from "react";
 import putToDo from "../apis/putToDo";
 import deleteToDo from "../apis/deleteToDo";
-import {buttonStyle, inputStyle, smButtonStyle} from "../utils/globalStyle";
+import {smButtonStyle, smInputStyle} from "../utils/globalStyle";
 
 function ToDo({id, todo, isCompleted, toDos, setToDos}) {
   const [title, setTitle] = useState(todo);
@@ -48,26 +48,27 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
   };
 
   return (
-    <li>
-      <label>
+    <li className='flex justify-between'>
+      <label className='w-10/12'>
         <input
           type='checkbox'
           checked={isComplete}
           onChange={handleChangeCheckbox}
+          className='mr-1'
         />
         {isModify ? (
           <input
             data-testid='modify-input'
             onChange={handleChangeTitle}
             value={title}
-            className={inputStyle}></input>
+            className={`${smInputStyle} w-11/12`}></input>
         ) : (
           <span>{title}</span>
         )}
       </label>
 
       {isModify ? (
-        <>
+        <div>
           <button
             data-testid='submit-button'
             onClick={handleClickSubmit}
@@ -80,9 +81,9 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
             className={smButtonStyle}>
             취소
           </button>
-        </>
+        </div>
       ) : (
-        <>
+        <div>
           <button
             data-testid='modify-button'
             onClick={handleClickModify}
@@ -95,7 +96,7 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
             className={smButtonStyle}>
             삭제
           </button>
-        </>
+        </div>
       )}
     </li>
   );

@@ -21,10 +21,10 @@ function ToDoList() {
   }, []);
 
   return (
-    <div>
+    <div className='space-y-1'>
       <h1 className='text-3xl'>ToDo List</h1>
       <ToDoForm toDos={toDos} setToDos={setToDos} />
-      <ul>
+      <ul className='flex flex-col'>
         {toDos.map((todo) => (
           <ToDo
             key={todo.id}

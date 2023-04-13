@@ -6,7 +6,7 @@ import ToDoList from "./pages/ToDoList";
 
 function App() {
   return (
-    <div>
+    <div className='flex p-4'>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Main />} />
