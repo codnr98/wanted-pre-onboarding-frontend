@@ -26,6 +26,7 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
     const response = await putToDo(id, pathModifyData);
     const index = toDos.findIndex((todo) => todo.id === response.id);
     setToDos([...toDos.slice(0, index), response, ...toDos.slice(index + 1)]);
+    setIsModify(false);
   };
 
   const handleChangeTitle = (e) => {
