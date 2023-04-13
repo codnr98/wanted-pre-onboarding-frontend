@@ -1,5 +1,6 @@
 import {useState} from "react";
 import postToDo from "../apis/postToDo";
+import {buttonStyle, inputStyle} from "../utils/globalStyle";
 
 function ToDoForm({toDos, setToDos}) {
   const [toDo, setToDo] = useState("");
@@ -32,8 +33,12 @@ function ToDoForm({toDos, setToDos}) {
         data-testid='new-todo-input'
         value={toDo}
         onChange={handleChangeToDo}
+        className={inputStyle}
       />
-      <button data-testid='new-todo-add-button' onClick={handleClick}>
+      <button
+        data-testid='new-todo-add-button'
+        onClick={handleClick}
+        className={buttonStyle}>
         추가
       </button>
     </form>

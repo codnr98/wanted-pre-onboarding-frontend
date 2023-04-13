@@ -1,6 +1,7 @@
 import {useState} from "react";
 import putToDo from "../apis/putToDo";
 import deleteToDo from "../apis/deleteToDo";
+import {buttonStyle, inputStyle, smButtonStyle} from "../utils/globalStyle";
 
 function ToDo({id, todo, isCompleted, toDos, setToDos}) {
   const [title, setTitle] = useState(todo);
@@ -58,7 +59,8 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
           <input
             data-testid='modify-input'
             onChange={handleChangeTitle}
-            value={title}></input>
+            value={title}
+            className={inputStyle}></input>
         ) : (
           <span>{title}</span>
         )}
@@ -66,19 +68,31 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
 
       {isModify ? (
         <>
-          <button data-testid='submit-button' onClick={handleClickSubmit}>
+          <button
+            data-testid='submit-button'
+            onClick={handleClickSubmit}
+            className={smButtonStyle}>
             제출
           </button>
-          <button data-testid='cancel-button' onClick={handleClickCancel}>
+          <button
+            data-testid='cancel-button'
+            onClick={handleClickCancel}
+            className={smButtonStyle}>
             취소
           </button>
         </>
       ) : (
         <>
-          <button data-testid='modify-button' onClick={handleClickModify}>
+          <button
+            data-testid='modify-button'
+            onClick={handleClickModify}
+            className={smButtonStyle}>
             수정
           </button>
-          <button data-testid='delete-button' onClick={handleClickDelete}>
+          <button
+            data-testid='delete-button'
+            onClick={handleClickDelete}
+            className={smButtonStyle}>
             삭제
           </button>
         </>

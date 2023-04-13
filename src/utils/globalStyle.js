@@ -3,3 +3,5 @@ export const inputStyle =
 
 export const buttonStyle =
   "border p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-300";
+
+export const smButtonStyle = "mx-0.5 text-gray-500 text-sm hover:text-gray-700";
