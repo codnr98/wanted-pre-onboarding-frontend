@@ -1,3 +1,5 @@
+import {inputStyle} from "../utils/globalStyle";
+
 function EmailInput({
   errorMessage,
   state,
@@ -18,7 +20,7 @@ function EmailInput({
         type='email'
         id={id}
         value={value}
-        className={`py-2 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+        className={`${inputStyle} ${
           disabled ? "bg-gray-100" : "bg-white"
         } ${className}`}
       />
