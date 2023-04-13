@@ -66,10 +66,10 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
 
       {isModify ? (
         <>
-          <button data-testid='modify-button' onClick={handleClickSubmit}>
+          <button data-testid='submit-button' onClick={handleClickSubmit}>
             제출
           </button>
-          <button data-testid='delete-button' onClick={handleClickCancel}>
+          <button data-testid='cancel-button' onClick={handleClickCancel}>
             취소
           </button>
         </>
