@@ -5,6 +5,7 @@ import PasswordInput from "../components/PasswordInput";
 import validationEmail from "../utils/validationEmail";
 import validationPassword from "../utils/validationPassword";
 import postSignIn from "../apis/postSignIn";
+import {buttonStyle} from "../utils/globalStyle";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -76,7 +77,7 @@ function SignIn() {
           errorMessage={isPasswordSuccess.errorMessage}
         />
         <button
-          className='border p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-300'
+          className={buttonStyle}
           onClick={handleClick}
           type='submit'
           data-testid='signin-button'

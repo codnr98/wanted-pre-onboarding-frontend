@@ -6,6 +6,7 @@ import validationPassword from "../utils/validationPassword";
 import postSignUp from "../apis/postSignUp";
 import EmailInput from "../components/EmailInput";
 import PasswordInput from "../components/PasswordInput";
+import {buttonStyle} from "../utils/globalStyle";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -77,7 +78,7 @@ function SignUp() {
           errorMessage={isPasswordSuccess.errorMessage}
         />
         <button
-          className='border p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 disabled:bg-blue-300'
+          className={buttonStyle}
           onClick={handleClick}
           type='submit'
           data-testid='signup-button'
