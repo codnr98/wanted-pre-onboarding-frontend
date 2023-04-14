@@ -19,7 +19,7 @@ function ToDoList() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem("access_token")) {
+    if (!accessToken) {
       navigate("/signin");
     }
     patchToDoList();
@@ -29,7 +29,7 @@ function ToDoList() {
   return (
     <div className='space-y-1 w-full'>
       <h1 className='text-3xl'>ToDo List</h1>
-      <ToDoForm toDos={toDos} setToDos={setToDos} />
+      <ToDoForm toDos={toDos} setToDos={setToDos} accessToken={accessToken} />
       <ul className='flex flex-col'>
         {toDos.map((todo) => (
           <ToDo
@@ -39,6 +39,7 @@ function ToDoList() {
             isCompleted={todo.isCompleted}
             toDos={toDos}
             setToDos={setToDos}
+            accessToken={accessToken}
           />
         ))}
       </ul>

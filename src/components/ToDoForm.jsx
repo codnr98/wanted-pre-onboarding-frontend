@@ -2,7 +2,7 @@ import {useState} from "react";
 import postToDo from "../apis/postToDo";
 import {buttonStyle, inputStyle} from "../utils/globalStyle";
 
-function ToDoForm({toDos, setToDos}) {
+function ToDoForm({toDos, setToDos, accessToken}) {
   const [toDo, setToDo] = useState("");
 
   const pathData = {
@@ -18,7 +18,7 @@ function ToDoForm({toDos, setToDos}) {
     e.preventDefault();
     pathData.todo = toDo;
     try {
-      const response = await postToDo(pathData);
+      const response = await postToDo(pathData, accessToken);
       setToDos([...toDos, response]);
       console.log(toDos);
       setToDo("");

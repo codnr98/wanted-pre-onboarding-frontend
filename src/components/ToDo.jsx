@@ -3,7 +3,7 @@ import putToDo from "../apis/putToDo";
 import deleteToDo from "../apis/deleteToDo";
 import {smButtonStyle, smInputStyle} from "../utils/globalStyle";
 
-function ToDo({id, todo, isCompleted, toDos, setToDos}) {
+function ToDo({id, todo, isCompleted, toDos, setToDos, accessToken}) {
   const [title, setTitle] = useState(todo);
   const [isComplete, setIsComplete] = useState(isCompleted);
   const [isModify, setIsModify] = useState(false);
@@ -24,7 +24,7 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
 
   const handleClickSubmit = async () => {
     pathModifyData.todo = title;
-    const response = await putToDo(id, pathModifyData);
+    const response = await putToDo(id, pathModifyData, accessToken);
     const index = toDos.findIndex((todo) => todo.id === response.id);
     setToDos([...toDos.slice(0, index), response, ...toDos.slice(index + 1)]);
     setIsModify(false);
@@ -39,11 +39,11 @@ function ToDo({id, todo, isCompleted, toDos, setToDos}) {
     setIsComplete(!isComplete);
     pathModifyData.isCompleted = !isComplete;
     pathModifyData.todo = title;
-    await putToDo(id, pathModifyData);
+    await putToDo(id, pathModifyData, accessToken);
   };
 
   const handleClickDelete = async () => {
-    await deleteToDo(id);
+    await deleteToDo(id, accessToken);
     setToDos(toDos.filter((todo) => todo.id !== id));
   };
 
