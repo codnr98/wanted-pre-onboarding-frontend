@@ -49,9 +49,7 @@ function SignIn() {
       const data = await postSignIn(pathData);
       localStorage.setItem("access_token", data.access_token);
       if (localStorage.getItem("access_token")) navigate("/todo");
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

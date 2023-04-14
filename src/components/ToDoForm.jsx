@@ -21,9 +21,7 @@ function ToDoForm({toDos, setToDos, accessToken}) {
       const response = await postToDo(pathData, accessToken);
       setToDos([...toDos, response]);
       setToDo("");
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   return (

@@ -49,9 +49,7 @@ function SignUp() {
     try {
       await postSignUp(pathData);
       navigate("/signin");
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

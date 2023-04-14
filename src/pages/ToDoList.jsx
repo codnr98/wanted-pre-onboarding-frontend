@@ -13,9 +13,7 @@ function ToDoList() {
     try {
       const response = await getToDoList(accessToken);
       setToDos(response);
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
