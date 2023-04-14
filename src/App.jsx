@@ -7,7 +7,7 @@ import ToDoList from "./pages/ToDoList";
 function App() {
   return (
     <div className='flex p-4 w-96'>
-      <BrowserRouter>
+      <BrowserRouter basename='wanted-pre-onboarding-frontend'>
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/todo' element={<ToDoList />} />
