@@ -27,7 +27,7 @@ function ToDoList() {
   }, []);
 
   return (
-    <div className='space-y-1'>
+    <div className='space-y-1 w-full'>
       <h1 className='text-3xl'>ToDo List</h1>
       <ToDoForm toDos={toDos} setToDos={setToDos} />
       <ul className='flex flex-col'>

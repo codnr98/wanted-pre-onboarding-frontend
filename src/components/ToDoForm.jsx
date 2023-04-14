@@ -28,12 +28,12 @@ function ToDoForm({toDos, setToDos}) {
   };
 
   return (
-    <form>
+    <form className='w-full flex justify-between'>
       <input
         data-testid='new-todo-input'
         value={toDo}
         onChange={handleChangeToDo}
-        className={`${inputStyle} w-96 mr-1`}
+        className={`${inputStyle} w-full mr-1`}
       />
       <button
         data-testid='new-todo-add-button'
