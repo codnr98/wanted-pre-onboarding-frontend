@@ -20,7 +20,6 @@ function ToDoForm({toDos, setToDos, accessToken}) {
     try {
       const response = await postToDo(pathData, accessToken);
       setToDos([...toDos, response]);
-      console.log(toDos);
       setToDo("");
     } catch (error) {
       console.error(error);

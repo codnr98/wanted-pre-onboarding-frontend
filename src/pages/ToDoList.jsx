@@ -23,7 +23,6 @@ function ToDoList() {
       navigate("/signin");
     }
     patchToDoList();
-    console.log(1);
   }, []);
 
   return (

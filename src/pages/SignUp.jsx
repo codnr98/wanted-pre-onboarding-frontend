@@ -55,7 +55,6 @@ function SignUp() {
   };
 
   useEffect(() => {
-    console.log(localStorage.getItem("access_token"));
     if (localStorage.getItem("access_token")) {
       navigate("/todo");
     }
