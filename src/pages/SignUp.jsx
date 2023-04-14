@@ -62,9 +62,9 @@ function SignUp() {
   }, []);
 
   return (
-    <div>
+    <div className='w-full'>
       <h1 className='text-3xl'>Sign Up</h1>
-      <form>
+      <form className='space-y-1'>
         <EmailInput
           id={"signup__email-input"}
           value={email}
