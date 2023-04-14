@@ -7,10 +7,15 @@ import {useNavigate} from "react-router";
 function ToDoList() {
   const [toDos, setToDos] = useState([]);
   const navigate = useNavigate();
+  const accessToken = localStorage.getItem("access_token");
 
   const patchToDoList = async () => {
-    const response = await getToDoList();
-    setToDos(response);
+    try {
+      const response = await getToDoList(accessToken);
+      setToDos(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -18,6 +23,7 @@ function ToDoList() {
       navigate("/signin");
     }
     patchToDoList();
+    console.log(1);
   }, []);
 
   return (
